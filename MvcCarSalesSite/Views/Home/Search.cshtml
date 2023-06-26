@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MvcCarSalesSite.Models.Advert>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<div class="container">
+    <br />
+    
+    <div class="row">
+        <div class="col-md-3">
+            <br />
+            <!--filtreleme kısım--> <!--Layout-->
+            @Html.Action("FilterPartial", "Home")
+        </div>
+        @foreach (var item in Model)
+        {
+            var c = 1;
+            <div class="col-md-3">
+                <br />
+                <!--ilan listesi--> <!--Card-->
+                <div class="img-thumbnail">
+                    @foreach (var pct in ViewBag.imgs)
+                    {
+                        if (pct.AdvertID == item.AdvertID)
+                        {
+                            if (c == 1)
+                            {
+                                <a href="/Home/Detail/@item.AdvertID"><img src="/Content/images/@pct.PictureName" class="card-img-top" alt="..." height="240"></a>
+                                c++;
+                            }
+                        }
+                    }
+
+                    <div class="card-body">
+                        <h6 class="card-title">@item.Model.Brand.BrandName (MODEL: @item.Model.ModelName)</h6>
+                        <h6 class="card-title" style="color:darkblue">Model Yılı: @item.ModelYear (@item.Kilometer km)</h6>
+                        <h5 class="card-title" style="color:red">@item.Price ₺</h5>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿@model MvcCarSalesSite.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="container">
+    <br />
+
+    <div class="row">
+        <div class="col-md-3">
+            <br />
+            <!--filtreleme kısım--> <!--Layout-->
+            @Html.Action("FilterPartial", "Home")
+        </div>
+
+        <div class="col-md-9">
+            <!--bootstrap -> components -> breadcumb -> ortadaki kod kısmı-->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index/">Ana Sayfa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Giriş Formu</li>
+                </ol>
+            </nav>
+            <div class="img-thumbnail">
+                <br />
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "row" }))
+                {
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Kullanıcı Adı</label>
+                        <div class="col-sm-4">
+                            @Html.EditorFor(x => x.Username, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(x => x.Username, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Şifre</label>
+                        <div class="col-sm-4">
+                            @Html.EditorFor(x => x.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-outline-success col-6"><i class="bi bi-box-arrow-in-right"></i> Giriş</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>

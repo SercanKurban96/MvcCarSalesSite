@@ -1,0 +1,75 @@
+﻿@model IEnumerable<MvcCarSalesSite.Models.Advert>
+@{
+    ViewBag.Title = "AdvertList";
+}
+
+<div class="container">
+    <br />
+
+    <div class="row">     
+
+        <div class="col-md-12">
+            <!--bootstrap -> components -> breadcumb -> ortadaki kod kısmı-->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Admin/Index/">Admin Sayfası</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">İlan Listesi</li>
+                </ol>
+            </nav>
+            <div class="img-thumbnail">
+                <br />
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            Kullanıcı Adı
+                        </th>
+                        <th>
+                            Marka
+                        </th>
+                        <th>
+                            Model
+                        </th>
+                        <th>
+                            Durum
+                        </th>
+                        <th>
+                            Şehir
+                        </th>
+                        <th>
+                            Fiyat
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <label class="btn btn-primary">@item.Username</label>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Model.Brand.BrandName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Model.ModelName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status.StatusName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.City.CityName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" href="/Advert/Delete/@item.AdvertID"><i class="bi bi-trash"></i> Sil</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

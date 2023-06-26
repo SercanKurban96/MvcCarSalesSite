@@ -1,0 +1,59 @@
+﻿@model MvcCarSalesSite.Models.Advert
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-md-8">
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @{
+                        int i = 0;
+                    }
+                    @foreach (var item in ViewBag.imgs)
+                            {
+                                i++;
+                                var active = i == 1 ? "active" : "";
+                        <div class="carousel-item @active">
+                            <img src="/Content/images/@item.PictureName" class="d-block w-100" alt="..." height="590">
+                        </div>
+                    }
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <!--slider-->
+        <div class="col-md-4">
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <tr><th colspan="2">İlan Özellikleri</th></tr>
+                    <tr><td><strong>İlan No</strong></td><td>@Model.AdvertNo</td></tr>
+                    <tr><td><strong>Şehir</strong></td><td>@Model.City.CityName</td></tr>
+                    <tr><td><strong>Durum</strong></td><td>@Model.Status.StatusName</td></tr>
+                    <tr><td><strong>İlan Tarihi</strong></td><td>@Model.AdvertDate</td></tr>
+                    <tr><td><strong>Marka</strong></td><td>@Model.Model.Brand.BrandName</td></tr>
+                    <tr><td><strong>Model</strong></td><td>@Model.Model.ModelName</td></tr>
+                    <tr><td><strong>Model Yılı</strong></td><td>@Model.ModelYear</td></tr>
+                    <tr><td><strong>Kilometre</strong></td><td>@Model.Kilometer</td></tr>
+                    <tr><td><strong>Yakıt Türü</strong></td><td>@Model.FuelType</td></tr>
+                    <tr><td><strong>Vites Türü</strong></td><td>@Model.GearType</td></tr>
+                    <tr><td><strong>Açıklama</strong></td><td>@Model.Description</td></tr>
+                    <tr><td><strong>Fiyat</strong></td><td style="font-size:18px; color:indigo">@Model.Price ₺</td></tr>
+                    <tr><td><strong>Telefon</strong></td><td><label class="btn btn-success btn-block"><i class="bi bi-telephone-fill"></i> @Model.Phone</label></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

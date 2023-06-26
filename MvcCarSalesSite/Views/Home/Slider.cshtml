@@ -1,0 +1,21 @@
+﻿@model IEnumerable<MvcCarSalesSite.Models.Advert>
+@{ int i = 0;}
+@foreach (var item in Model)
+{
+    i++;
+    var c = 1;
+    var active = i == 1 ? "active" : "";
+    <div class="carousel-item @active">
+        @foreach (var pct in ViewBag.imgs)
+        {
+            if (pct.AdvertID == item.AdvertID)
+            {
+                if (c == 1)
+                {
+                    c++;
+                    <a href="/Home/Detail/@item.AdvertID"><img src="/Content/images/@pct.PictureName" class="d-block w-100" alt="..." height="500"></a>
+                }
+            }
+        }
+    </div>
+}

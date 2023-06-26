@@ -1,0 +1,63 @@
+﻿@model MvcCarSalesSite.Models.ChangePassword
+@{
+    ViewBag.Title = "ChangePass";
+}
+
+<div class="container">
+    <br />
+
+    <div class="row">
+        <div class="col-md-3">
+            <br />
+            <!--filtreleme kısım--> <!--Layout-->
+            @Html.Action("FilterPartial", "Home")
+        </div>
+
+        <div class="col-md-9">
+            <!--bootstrap -> components -> breadcumb -> ortadaki kod kısmı-->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index/">Ana Sayfa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Şifre Değiştir</li>
+                </ol>
+            </nav>
+            <div class="img-thumbnail">
+                <br />
+                @using (Html.BeginForm("ChangePass", "Account", FormMethod.Post, new { @class = "row" }))
+                {
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Eski Şifre</label>
+                        <div class="col-sm-4">
+                            @Html.PasswordFor(x => x.OldPassword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(x => x.OldPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Yeni Şifre</label>
+                        <div class="col-sm-4">
+                            @Html.PasswordFor(x => x.NewPassword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(x => x.NewPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Şifre Tekrar</label>
+                        <div class="col-sm-4">
+                            @Html.PasswordFor(x => x.ConNewPassword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(x => x.ConNewPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-outline-primary col-6"><i class="bi bi-pencil"></i> Şifre Değiştir</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
